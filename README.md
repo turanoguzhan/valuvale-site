@@ -5,7 +5,7 @@ Static pages served by GitHub Pages. No build step, no dependencies.
 | Path | Purpose |
 |---|---|
 | `privacy/index.html` | Privacy policy, TR + EN toggle. This URL goes into App Store Connect. |
-| `index.html` | Root redirect to the privacy page (landing page can replace it later). |
+| `index.html` | Landing page, TR + EN toggle: pitch, features, gün section, privacy, support e-mail. Use the site root as the **Support URL** and **Marketing URL** in App Store Connect. Swap the "App Store'da yakında" pill for the real App Store badge/link after approval. |
 
 ## Publish (one time)
 

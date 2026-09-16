@@ -3,9 +3,225 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ValuVale</title>
-<meta http-equiv="refresh" content="0; url=privacy/">
-<style>body{margin:0;background:#1E1E1E;color:#8E8E93;font:15px -apple-system,system-ui,sans-serif;display:grid;place-items:center;height:100vh}a{color:#008F7A}</style>
+<title>ValuVale — Borç, alacak ve gün takibi</title>
+<meta name="description" content="Kime ne borcun var, kimden ne alacağın var — altın, döviz ve TL'de, tek ekranda. Gün takibi dahil. Verilerin telefonundan çıkmaz. / Who owes you, what you owe — in gold, currencies and lira. Savings circles included. Your data never leaves your phone.">
+<meta property="og:title" content="ValuVale">
+<meta property="og:description" content="Borç, alacak ve gün takibi. Verilerin telefonundan çıkmaz.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpath d='M8 44 L22 26 L34 40 L56 10' stroke='%23008F7A' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 56 L22 38 L34 52 L56 22' stroke='%23008F7A' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' opacity='.55'/%3E%3C/svg%3E">
+<style>
+  :root{--bg:#1E1E1E;--card:#252525;--txt:#F2F2F2;--sec:#8E8E93;--brand:#008F7A;--mint:#34D399;--div:#2C2C2E}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif}
+  main{max-width:960px;margin:0 auto;padding:28px 20px 64px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:48px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--txt);text-decoration:none}
+  .brand svg{width:34px;height:34px}
+  .lang{display:flex;border:1px solid var(--div);border-radius:999px;overflow:hidden}
+  .lang button{background:transparent;border:0;color:var(--sec);padding:6px 14px;font:600 13px inherit;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--brand);color:#fff}
+
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-bottom:56px}
+  .hero h1{font-size:44px;line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+  .hero h1 span{color:var(--mint)}
+  .hero p{font-size:18px;color:#D1D1D6;margin:0 0 24px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:15px}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-ghost{border:1px solid var(--div);color:var(--txt)}
+  .btn-soon{border:1px dashed var(--div);color:var(--sec);cursor:default}
+  .cta small{display:block;width:100%;color:var(--sec);font-size:13px}
+
+  .phone{justify-self:center;width:min(300px,100%);border-radius:44px;background:#0F0F10;border:1px solid #333;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .phone img{display:block;width:100%;height:auto;border-radius:34px}
+
+  h2{font-size:26px;margin:0 0 20px;letter-spacing:-.01em}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:56px}
+  .feature{background:var(--card);border-radius:16px;padding:20px}
+  .feature h3{color:var(--brand);font-size:15px;margin:0 0 8px}
+  .feature p{margin:0;color:#D1D1D6;font-size:15px}
+  .feature .ic{font-size:22px;margin-bottom:10px;display:block}
+
+  .gun{background:linear-gradient(180deg,#1f2a28,#252525);border:1px solid #2d3e3a;border-radius:16px;padding:24px;margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .gun h2{margin-bottom:10px}
+  .gun p{color:#D1D1D6;margin:0 0 12px}
+  .ledger{background:var(--bg);border-radius:12px;padding:14px;font-size:13px}
+  .ledger .hd{display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px}
+  .ledger .li{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--div)}
+  .ledger .li span:first-child{display:flex;gap:8px;align-items:center}
+  .dot{width:16px;height:16px;border-radius:50%;border:1.5px solid #555;display:inline-block}
+  .dot.on{background:var(--mint);border-color:var(--mint)}
+  .dot.gift{background:#F59E0B;border-color:#F59E0B}
+  .note{color:var(--sec);font-size:12px;margin-top:10px}
+
+  .privacy{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:56px}
+  .privacy div{background:var(--card);border-radius:14px;padding:16px;font-size:15px;color:#D1D1D6}
+  .privacy b{display:block;color:var(--txt);margin-bottom:4px}
+
+  .support{background:var(--card);border-radius:16px;padding:24px;margin-bottom:24px}
+  .support p{margin:0 0 8px;color:#D1D1D6}
+  a{color:var(--brand)}
+  footer{color:var(--sec);font-size:13px;text-align:center;margin-top:36px}
+  footer a{color:var(--sec)}
+  [hidden]{display:none!important}
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;gap:28px}
+    .hero h1{font-size:34px}
+    .gun{grid-template-columns:1fr}
+    .phone{width:min(260px,100%)}
+  }
+</style>
 </head>
-<body><p>ValuVale · <a href="privacy/">Gizlilik Politikası / Privacy Policy</a></p></body>
+<body>
+<main>
+<header>
+  <a class="brand" href="./">
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 44 L22 26 L34 40 L56 10" stroke="#008F7A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 56 L22 38 L34 52 L56 22" stroke="#008F7A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+    ValuVale
+  </a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+</header>
+
+<!-- ───────────────────────── TÜRKÇE ───────────────────────── -->
+<article data-lang="tr">
+  <section class="hero">
+    <div>
+      <h1>Kime ne borcun var,<br>kimden ne alacağın var — <span>tek sayıda.</span></h1>
+      <p>Altın, döviz ve TL cinsinden borç ve alacaklarını kendi biriminde tut, anlık kurla TL karşılığını gör. Gün takibi dahil. Verilerin telefonundan çıkmaz.</p>
+      <div class="cta">
+        <span class="btn btn-soon" aria-disabled="true"> App Store'da yakında</span>
+        <a class="btn btn-ghost" href="#destek">Destek</a>
+        <small>iPhone · iOS 17 ve üzeri · Ücretsiz · Reklamsız</small>
+      </div>
+    </div>
+    <div class="phone"><img src="assets/dashboard-tr.png" alt="ValuVale ana sayfa: net varlık durumu, dağılım grafiği, güncel kurlar, gün kartı" loading="lazy"></div>
+  </section>
+
+  <h2>Neden ValuVale?</h2>
+  <section class="features">
+    <div class="feature"><span class="ic">🧾</span><h3>Borç ve alacak kayıtları</h3><p>Tek seferlik ya da taksitli. Kısmi ödemeler, ön ödeme, isteğe bağlı ya da zorunlu vade, vade günü hatırlatma.</p></div>
+    <div class="feature"><span class="ic">🪙</span><h3>Altın, döviz, TL</h3><p>Her kayıt kendi biriminde saklanır; anlık kurla TL karşılığı yanında. Kur kilidiyle kayıt günündeki kuru dondurabilirsin.</p></div>
+    <div class="feature"><span class="ic">👥</span><h3>Kişiler</h3><p>Kişi başına net bakiye, varlık kırılımı ve tüm geçmiş. Rehberden seç ya da adı yaz.</p></div>
+    <div class="feature"><span class="ic">🔒</span><h3>Gizlilik önce</h3><p>Face ID, Touch ID ya da PIN. Uygulama değiştiricide gizlilik perdesi. Göz simgesiyle tüm tutarlar tek dokunuşta gizlenir.</p></div>
+  </section>
+
+  <section class="gun">
+    <div>
+      <h2>Gün takibi</h2>
+      <p>Kim ödedi, kimin sırası, ben ne zaman alıyorum? Günü kur, üyeleri alma sırasına diz, katkı tutarını gir. Hangi turda kimin alacağını, senin sıranın ne zaman geldiğini ve kaç para alacağını görürsün.</p>
+      <p>Kendi turunda kimlerin ödediğini işaretlersin; diğer turlarda yalnızca kendi ödemeni — çünkü bilebileceğin tek şey odur. Parayı toplayan sensen tüm ödemeleri takip etme seçeneği de var.</p>
+      <p class="note">Gün, borç/alacak bakiyeni etkilemez; ayrı bir kartta yaşar.</p>
+    </div>
+    <div class="ledger" aria-hidden="true">
+      <div class="hd"><span>3. Tur · 14 Kas</span><span class="g">3/5 ödedi</span></div>
+      <div class="li"><span><span class="dot on"></span>Sen</span><span class="g">Ödedi</span></div>
+      <div class="li"><span><span class="dot on"></span>Ayşe</span><span class="g">Ödedi</span></div>
+      <div class="li"><span><span class="dot gift"></span>Mehmet</span><span>Alıyor</span></div>
+      <div class="li"><span><span class="dot on"></span>Zeynep</span><span class="g">Ödedi</span></div>
+      <div class="li"><span><span class="dot"></span>Ali</span><span style="color:#F59E0B">Bekliyor</span></div>
+      <div class="li"><span><span class="dot"></span>Can</span><span style="color:#F59E0B">Bekliyor</span></div>
+    </div>
+  </section>
+
+  <h2>Verilerin sana ait</h2>
+  <section class="privacy">
+    <div><b>Yalnızca telefonunda</b>Hesap yok, sunucu yok, analitik yok, üçüncü taraf SDK yok.</div>
+    <div><b>Tek ağ isteği</b>altinkaynak.com'dan herkese açık kur listesi. Kişisel veri gönderilmez.</div>
+    <div><b>Yedek senin elinde</b>Tam yedek al, WhatsApp'a ya da iCloud'a kaydet, istediğin zaman geri yükle.</div>
+    <div><b>Düzenli ödemeler için de</b>Abonelikler, faturalar, kira: kurumu kişi olarak ekle, vade koy, hatırlatmayı aç.</div>
+  </section>
+
+  <section class="support" id="destek">
+    <h2>Destek</h2>
+    <p>Soru, öneri ya da hata bildirimi için: <a href="mailto:valuvale@cheetahtechlab.com">valuvale@cheetahtechlab.com</a></p>
+    <p>Genellikle iki iş günü içinde yanıtlıyoruz. Türkçe ve İngilizce.</p>
+    <p><a href="privacy/">Gizlilik Politikası</a></p>
+  </section>
+</article>
+
+<!-- ───────────────────────── ENGLISH ───────────────────────── -->
+<article data-lang="en" hidden>
+  <section class="hero">
+    <div>
+      <h1>Who owes you,<br>what you owe — <span>in one number.</span></h1>
+      <p>Keep debts and receivables in gold, currencies and lira in their own units, with live Turkish lira equivalents. Savings circles included. Your data never leaves your phone.</p>
+      <div class="cta">
+        <span class="btn btn-soon" aria-disabled="true"> Coming soon on the App Store</span>
+        <a class="btn btn-ghost" href="#support">Support</a>
+        <small>iPhone · iOS 17 or later · Free · No ads</small>
+      </div>
+    </div>
+    <div class="phone"><img src="assets/dashboard-en.png" alt="ValuVale dashboard: net position, distribution chart, live rates, savings circle card" loading="lazy"></div>
+  </section>
+
+  <h2>Why ValuVale?</h2>
+  <section class="features">
+    <div class="feature"><span class="ic">🧾</span><h3>Debt and receivable records</h3><p>Lump sum or installments. Partial payments, advance payment, optional or mandatory due dates, a reminder on the day.</p></div>
+    <div class="feature"><span class="ic">🪙</span><h3>Gold, currencies, lira</h3><p>Every record is stored in its own unit and shown next to a live lira equivalent. Rate lock freezes the rate on the day of the record.</p></div>
+    <div class="feature"><span class="ic">👥</span><h3>People</h3><p>Net balance per person, asset breakdown and the full history. Pick from Contacts or type a name.</p></div>
+    <div class="feature"><span class="ic">🔒</span><h3>Privacy first</h3><p>Face ID, Touch ID or PIN. A privacy curtain in the app switcher. One tap on the eye hides every amount.</p></div>
+  </section>
+
+  <section class="gun">
+    <div>
+      <h2>Savings circles ("gün")</h2>
+      <p>Who paid, whose turn is it, when do I collect? Set up the circle, order the members, enter the contribution. You see who receives which round, when your turn comes and how much you'll collect.</p>
+      <p>In your own round you mark who paid you; in the other rounds only your own payment — because that is all you can actually know. If you're the one collecting, an organizer switch tracks everyone.</p>
+      <p class="note">Circles never touch your debt/receivable balance; they live on their own card.</p>
+    </div>
+    <div class="ledger" aria-hidden="true">
+      <div class="hd"><span>Round 3 · 14 Nov</span><span class="g">3/5 paid</span></div>
+      <div class="li"><span><span class="dot on"></span>You</span><span class="g">Paid</span></div>
+      <div class="li"><span><span class="dot on"></span>Ayşe</span><span class="g">Paid</span></div>
+      <div class="li"><span><span class="dot gift"></span>Mehmet</span><span>Receiving</span></div>
+      <div class="li"><span><span class="dot on"></span>Zeynep</span><span class="g">Paid</span></div>
+      <div class="li"><span><span class="dot"></span>Ali</span><span style="color:#F59E0B">Waiting</span></div>
+      <div class="li"><span><span class="dot"></span>Can</span><span style="color:#F59E0B">Waiting</span></div>
+    </div>
+  </section>
+
+  <h2>Your data is yours</h2>
+  <section class="privacy">
+    <div><b>On your phone only</b>No account, no server, no analytics, no third-party SDK.</div>
+    <div><b>One network request</b>The public rate list from altinkaynak.com. No personal data is sent.</div>
+    <div><b>Backups in your hands</b>Take a full backup, save it to WhatsApp or iCloud, restore whenever you want.</div>
+    <div><b>Recurring payments too</b>Subscriptions, bills, rent: add the company as a person, set a due date, turn on the reminder.</div>
+  </section>
+
+  <section class="support" id="support">
+    <h2>Support</h2>
+    <p>Questions, suggestions or bug reports: <a href="mailto:valuvale@cheetahtechlab.com">valuvale@cheetahtechlab.com</a></p>
+    <p>We usually answer within two business days. Turkish and English.</p>
+    <p><a href="privacy/?lang=en">Privacy Policy</a></p>
+  </section>
+</article>
+
+<footer>© 2026 Oğuz Han Turan · <a href="privacy/">Gizlilik / Privacy</a></footer>
+</main>
+
+<script>
+(function(){
+  var buttons = document.querySelectorAll('.lang button');
+  var articles = document.querySelectorAll('article[data-lang]');
+  function show(lang){
+    articles.forEach(function(a){ a.hidden = a.dataset.lang !== lang; });
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('vv-lang', lang); } catch(e){}
+  }
+  buttons.forEach(function(b){ b.addEventListener('click', function(){ show(b.dataset.lang); }); });
+  var pick = null;
+  try { pick = localStorage.getItem('vv-lang'); } catch(e){}
+  if (!pick) {
+    var q = new URLSearchParams(location.search).get('lang');
+    pick = q || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  }
+  show(pick === 'en' ? 'en' : 'tr');
+})();
+</script>
+</body>
 </html>
