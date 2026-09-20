@@ -43,6 +43,14 @@
   .feature p{margin:0;color:#D1D1D6;font-size:15px}
   .feature .ic{font-size:22px;margin-bottom:10px;display:block}
 
+  .highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:64px}
+  .hl{background:var(--card);border-radius:20px;padding:22px 22px 0;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+  .hl .tag{display:inline-block;align-self:flex-start;background:rgba(0,143,122,.18);color:var(--mint);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+  .hl h3{margin:0;font-size:22px;line-height:1.2;letter-spacing:-.01em}
+  .hl p{margin:0 0 6px;color:#D1D1D6;font-size:15px}
+  .hl .shot{margin:auto -6px 0;padding-top:10px;aspect-ratio:1/1.32;overflow:hidden}
+  .hl .shot img{display:block;width:100%;height:auto;border-radius:28px 28px 0 0;border:1px solid #333;border-bottom:0;box-shadow:0 -12px 40px rgba(0,0,0,.45)}
+
   .gun{background:linear-gradient(180deg,#1f2a28,#252525);border:1px solid #2d3e3a;border-radius:16px;padding:24px;margin-bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
   .gun h2{margin-bottom:10px}
   .gun p{color:#D1D1D6;margin:0 0 12px}
@@ -69,6 +77,7 @@
     .hero{grid-template-columns:1fr;gap:28px}
     .hero h1{font-size:34px}
     .gun{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
     .phone{width:min(260px,100%)}
   }
 </style>
@@ -101,6 +110,28 @@
     <div class="phone"><img src="assets/dashboard-tr.png" alt="ValuVale ana sayfa: net varlık durumu, dağılım grafiği, güncel kurlar, gün kartı" loading="lazy"></div>
   </section>
 
+  <h2>Öne çıkanlar</h2>
+  <section class="highlights">
+    <div class="hl">
+      <span class="tag">Türkiye'ye özgü</span>
+      <h3>Gün takibi</h3>
+      <p>Kim ödedi, kimin sırası, sen ne zaman ve ne kadar alıyorsun — tur tur, tek ekranda.</p>
+      <div class="shot"><img src="assets/gun-tr.png" alt="Gün ekranı: benim sıram kartı, tur çipleri ve ödeme listesi" loading="lazy"></div>
+    </div>
+    <div class="hl">
+      <span class="tag">Anlık kur</span>
+      <h3>Borcun bugünkü TL karşılığı</h3>
+      <p>Çeyrek altın, dolar, gram gümüş… Kayıt kendi biriminde durur, TL karşılığı her açışta güncel kurla yenilenir.</p>
+      <div class="shot"><img src="assets/detail-tr.png" alt="Kayıt detayı: 12 taksitli kira borcu, 3 taksit ödendi, taksit planı" loading="lazy"></div>
+    </div>
+    <div class="hl">
+      <span class="tag">Yalnızca telefonunda</span>
+      <h3>Yüksek yerel güvenlik</h3>
+      <p>Face ID, Touch ID ya da PIN. Uygulama değiştiricide gizlilik perdesi; göz simgesiyle tüm tutarlar tek dokunuşta gizlenir. Sunucu yok, hesap yok, reklam yok.</p>
+      <div class="shot"><img src="assets/lock-tr.png" alt="PIN kilit ekranı" loading="lazy"></div>
+    </div>
+  </section>
+
   <h2>Neden ValuVale?</h2>
   <section class="features">
     <div class="feature"><span class="ic">🧾</span><h3>Borç ve alacak kayıtları</h3><p>Tek seferlik ya da taksitli. Kısmi ödemeler, ön ödeme, isteğe bağlı ya da zorunlu vade, vade günü hatırlatma.</p></div>
@@ -129,6 +160,7 @@
 
   <h2>Verilerin sana ait</h2>
   <section class="privacy">
+    <div><b>Reklam yok — asla</b>Finansal verinin yanında reklam olmaz. Ücretsiz sürümde de, ileride gelecek Pro'da da: gelir modelimiz isteğe bağlı özellikler, dikkatin değil.</div>
     <div><b>Yalnızca telefonunda</b>Hesap yok, sunucu yok, analitik yok, üçüncü taraf SDK yok.</div>
     <div><b>Tek ağ isteği</b>altinkaynak.com'dan herkese açık kur listesi. Kişisel veri gönderilmez.</div>
     <div><b>Yedek senin elinde</b>Tam yedek al, WhatsApp'a ya da iCloud'a kaydet, istediğin zaman geri yükle.</div>
@@ -156,6 +188,28 @@
       </div>
     </div>
     <div class="phone"><img src="assets/dashboard-en.png" alt="ValuVale dashboard: net position, distribution chart, live rates, savings circle card" loading="lazy"></div>
+  </section>
+
+  <h2>Highlights</h2>
+  <section class="highlights">
+    <div class="hl">
+      <span class="tag">Made for Türkiye</span>
+      <h3>Savings circle tracking</h3>
+      <p>Who paid, whose turn it is, when and how much you collect — round by round, on one screen.</p>
+      <div class="shot"><img src="assets/gun-en.png" alt="Savings circle screen: my turn card, round chips and the payment list" loading="lazy"></div>
+    </div>
+    <div class="hl">
+      <span class="tag">Live rates</span>
+      <h3>What a debt is worth today</h3>
+      <p>Quarter gold, dollars, grams of silver… The record stays in its own unit; the lira equivalent refreshes with the live rate every time you open the app.</p>
+      <div class="shot"><img src="assets/detail-en.png" alt="Record detail: a 12-installment rent debt, 3 paid, the installment plan" loading="lazy"></div>
+    </div>
+    <div class="hl">
+      <span class="tag">On your phone only</span>
+      <h3>Strong local security</h3>
+      <p>Face ID, Touch ID or PIN. A privacy curtain in the app switcher; one tap on the eye hides every amount. No server, no account, no ads.</p>
+      <div class="shot"><img src="assets/lock-en.png" alt="PIN lock screen" loading="lazy"></div>
+    </div>
   </section>
 
   <h2>Why ValuVale?</h2>
@@ -186,6 +240,7 @@
 
   <h2>Your data is yours</h2>
   <section class="privacy">
+    <div><b>No ads — ever</b>Ads don't belong next to your financial data. Not in the free app, not in the Pro that comes later: we earn from optional features, not your attention.</div>
     <div><b>On your phone only</b>No account, no server, no analytics, no third-party SDK.</div>
     <div><b>One network request</b>The public rate list from altinkaynak.com. No personal data is sent.</div>
     <div><b>Backups in your hands</b>Take a full backup, save it to WhatsApp or iCloud, restore whenever you want.</div>
