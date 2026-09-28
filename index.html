@@ -4,20 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ValuVale — Borç, alacak ve gün takibi</title>
-<meta name="description" content="Kime ne borcun var, kimden ne alacağın var — altın, döviz ve TL'de, tek ekranda. Gün takibi dahil. Verilerin telefonundan çıkmaz. / Who owes you, what you owe — in gold, currencies and lira. Savings circles included. Your data never leaves your phone.">
+<meta name="description" content="Kime ne borcun var, kimden ne alacağın var — altın, döviz ve TL'de, tek ekranda. Gün takibi dahil. Verilerin telefonundan çıkmaz. / Who owes you, what you owe — in gold, currencies and Turkish lira. Savings circles included. Your data never leaves your phone.">
 <meta property="og:title" content="ValuVale">
 <meta property="og:description" content="Borç, alacak ve gün takibi. Verilerin telefonundan çıkmaz.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpath d='M8 44 L22 26 L34 40 L56 10' stroke='%23008F7A' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 56 L22 38 L34 52 L56 22' stroke='%23008F7A' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' opacity='.55'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
 <style>
-  :root{--bg:#1E1E1E;--card:#252525;--txt:#F2F2F2;--sec:#8E8E93;--brand:#008F7A;--mint:#34D399;--div:#2C2C2E}
+  :root{--bg:#1E1E1E;--card:#252525;--txt:#F2F2F2;--sec:#8E8E93;--brand:#006961;--mint:#38CABF;--div:#2C2C2E}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif}
   main{max-width:960px;margin:0 auto;padding:28px 20px 64px}
   header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:48px}
   .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--txt);text-decoration:none}
-  .brand svg{width:34px;height:34px}
+  .brand img{height:30px;width:auto;display:block}
   .lang{display:flex;border:1px solid var(--div);border-radius:999px;overflow:hidden}
   .lang button{background:transparent;border:0;color:var(--sec);padding:6px 14px;font:600 13px inherit;cursor:pointer}
   .lang button[aria-pressed="true"]{background:var(--brand);color:#fff}
@@ -45,7 +47,7 @@
 
   .highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:64px}
   .hl{background:var(--card);border-radius:20px;padding:22px 22px 0;display:flex;flex-direction:column;gap:10px;overflow:hidden}
-  .hl .tag{display:inline-block;align-self:flex-start;background:rgba(0,143,122,.18);color:var(--mint);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+  .hl .tag{display:inline-block;align-self:flex-start;background:rgba(0,105,97,.30);color:var(--mint);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
   .hl h3{margin:0;font-size:22px;line-height:1.2;letter-spacing:-.01em}
   .hl p{margin:0 0 6px;color:#D1D1D6;font-size:15px}
   .hl .shot{margin:auto -6px 0;padding-top:10px;aspect-ratio:1/1.32;overflow:hidden}
@@ -86,8 +88,7 @@
 <main>
 <header>
   <a class="brand" href="./">
-    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 44 L22 26 L34 40 L56 10" stroke="#008F7A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 56 L22 38 L34 52 L56 22" stroke="#008F7A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
-    ValuVale
+    <img src="assets/brand/logo-horizontal.png" alt="ValuVale">
   </a>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
@@ -180,7 +181,7 @@
   <section class="hero">
     <div>
       <h1>Who owes you,<br>what you owe — <span>in one number.</span></h1>
-      <p>Keep debts and receivables in gold, currencies and lira in their own units, with live Turkish lira equivalents. Savings circles included. Your data never leaves your phone.</p>
+      <p>Keep debts and receivables in gold, currencies and Turkish lira, each in its own unit, with a live TRY equivalent. Savings circles included. Your data never leaves your phone.</p>
       <div class="cta">
         <span class="btn btn-soon" aria-disabled="true"> Coming soon on the App Store</span>
         <a class="btn btn-ghost" href="#support">Support</a>
@@ -201,7 +202,7 @@
     <div class="hl">
       <span class="tag">Live rates</span>
       <h3>What a debt is worth today</h3>
-      <p>Quarter gold, dollars, grams of silver… The record stays in its own unit; the lira equivalent refreshes with the live rate every time you open the app.</p>
+      <p>Quarter gold, dollars, grams of silver… The record stays in its own unit; the TRY equivalent refreshes with the live rate every time you open the app.</p>
       <div class="shot"><img src="assets/detail-en.png" alt="Record detail: a 12-installment rent debt, 3 paid, the installment plan" loading="lazy"></div>
     </div>
     <div class="hl">
@@ -215,7 +216,7 @@
   <h2>Why ValuVale?</h2>
   <section class="features">
     <div class="feature"><span class="ic">🧾</span><h3>Debt and receivable records</h3><p>Lump sum or installments. Partial payments, advance payment, optional or mandatory due dates, a reminder on the day.</p></div>
-    <div class="feature"><span class="ic">🪙</span><h3>Gold, currencies, lira</h3><p>Every record is stored in its own unit and shown next to a live lira equivalent. Rate lock freezes the rate on the day of the record.</p></div>
+    <div class="feature"><span class="ic">🪙</span><h3>Gold, currencies, Turkish lira</h3><p>Every record is stored in its own unit and shown next to a live TRY equivalent. Rate lock freezes the rate on the day of the record.</p></div>
     <div class="feature"><span class="ic">👥</span><h3>People</h3><p>Net balance per person, asset breakdown and the full history. Pick from Contacts or type a name.</p></div>
     <div class="feature"><span class="ic">🔒</span><h3>Privacy first</h3><p>Face ID, Touch ID or PIN. A privacy curtain in the app switcher. One tap on the eye hides every amount.</p></div>
   </section>
