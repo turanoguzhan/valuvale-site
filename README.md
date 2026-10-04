@@ -5,7 +5,7 @@ Static pages served by GitHub Pages. No build step, no dependencies.
 | Path | Purpose |
 |---|---|
 | `privacy/index.html` | Privacy policy, TR + EN toggle. This URL goes into App Store Connect. |
-| `index.html` | Landing page, TR + EN toggle: pitch, features, gün section, privacy, support e-mail. Use the site root as the **Support URL** and **Marketing URL** in App Store Connect. Swap the "App Store'da yakında" pill for the real App Store badge/link after approval. |
+| `index.html` | Landing page, TR + EN toggle: pitch, features, gün section, privacy, support e-mail. Use the site root as the **Support URL** and **Marketing URL** in App Store Connect. The hero carries Apple's official "Download on the App Store" badge (TR/EN, served by Apple's marketing tools, unmodified), linking to `apps.apple.com/app/id6812911060`; the `apple-itunes-app` meta adds Safari's smart banner on iPhone. |
 
 ## Publish (one time)
 

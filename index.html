@@ -8,6 +8,8 @@
 <meta property="og:title" content="ValuVale">
 <meta property="og:description" content="Borç, alacak ve gün takibi. Verilerin telefonundan çıkmaz.">
 <meta property="og:type" content="website">
+<!-- Safari on iPhone shows the App Store smart banner -->
+<meta name="apple-itunes-app" content="app-id=6812911060">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
@@ -32,7 +34,9 @@
   .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:15px}
   .btn-primary{background:var(--brand);color:#fff}
   .btn-ghost{border:1px solid var(--div);color:var(--txt)}
-  .btn-soon{border:1px dashed var(--div);color:var(--sec);cursor:default}
+  /* Official Apple badge (marketing tools artwork, unmodified); 48px tall, above Apple's 40px minimum */
+  .appstore{display:inline-block;line-height:0;border-radius:10px}
+  .appstore img{height:48px;width:auto;display:block}
   .cta small{display:block;width:100%;color:var(--sec);font-size:13px}
 
   .phone{justify-self:center;width:min(300px,100%);border-radius:44px;background:#0F0F10;border:1px solid #333;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
@@ -103,7 +107,7 @@
       <h1>Kime ne borcun var,<br>kimden ne alacağın var — <span>tek sayıda.</span></h1>
       <p>Altın, döviz ve TL cinsinden borç ve alacaklarını kendi biriminde tut, anlık kurla TL karşılığını gör. Gün takibi dahil. Verilerin telefonundan çıkmaz.</p>
       <div class="cta">
-        <span class="btn btn-soon" aria-disabled="true"> App Store'da yakında</span>
+        <a class="appstore" href="https://apps.apple.com/app/id6812911060"><img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/tr-tr" width="182" height="48" alt="App Store'dan İndirin"></a>
         <a class="btn btn-ghost" href="#destek">Destek</a>
         <small>iPhone · iOS 17 ve üzeri · Ücretsiz · Reklamsız</small>
       </div>
@@ -183,7 +187,7 @@
       <h1>Who owes you,<br>what you owe — <span>in one number.</span></h1>
       <p>Keep debts and receivables in gold, currencies and Turkish lira, each in its own unit, with a live TRY equivalent. Savings circles included. Your data never leaves your phone.</p>
       <div class="cta">
-        <span class="btn btn-soon" aria-disabled="true"> Coming soon on the App Store</span>
+        <a class="appstore" href="https://apps.apple.com/app/id6812911060"><img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" width="144" height="48" alt="Download on the App Store"></a>
         <a class="btn btn-ghost" href="#support">Support</a>
         <small>iPhone · iOS 17 or later · Free · No ads</small>
       </div>
